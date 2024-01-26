@@ -3,6 +3,7 @@ import speech_recognition as sr
 import pyttsx3
 import webbrowser
 import wikipedia
+import os 
 
 
 engine = pyttsx3.init('sapi5')
@@ -17,10 +18,10 @@ def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour>=0 and hour<12:
       speak("good morning!")
-      speak("i am jarvis sir.please tell me how may i help you")
+      speak("i am jarvis sir please tell me how may i help you")
     elif hour>12 and hour<18:
       speak("good afternoon!")
-      speak("i am jarvis sir.please tell me how may i help you")
+      speak("i am jarvis sir please tell me how may i help you")
     else:
       speak("good evening!")
       speak("i am jarvis sir please tell me how may i help you")
@@ -61,10 +62,20 @@ if __name__ == "__main__":
 
     elif 'open youtube' in query:
         webbrowser.open("youtube.com")
-        
+
     elif 'open google' in query:
         webbrowser.open("google.com")    
-        
+
     elif 'the time' in query:
       strTime = datetime.datetime.now().strftime("%H:%M:%S")
-      speak(f"Sir the time is{strTime}")     
+      speak(f"Sir the time is{strTime}")  
+
+    elif 'play music' in query:
+      music_dir = 'C:\\users\\harsh sharma\\desktop\\music'
+      songs = os.listdir(music_dir)
+      print(songs)
+      os.startfile(os.path.join(music_dir, songs[3]))
+
+    elif 'open code' in query:
+      codePath = "C:\\Users\\Harsh Sharma\\AppData\\Local\\Programs\\Microsoft VS code\\code.exe"
+      os.startfile(codePath)
